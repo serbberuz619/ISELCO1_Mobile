@@ -1,16 +1,18 @@
-# Flutter / Android
+# Flutter
 build/
-.gradle/
 .dart_tool/
+.gradle/
+
+# Laravel
+vendor/
+.env
+storage/logs
 
 # Node
 node_modules/
 
-# VS Code
+# VSCode
 .vscode/
 
-# Environment
-.env
-
-# Logs
+# logs
 *.log
