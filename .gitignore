@@ -1,0 +1,16 @@
+# Flutter / Android
+build/
+.gradle/
+.dart_tool/
+
+# Node
+node_modules/
+
+# VS Code
+.vscode/
+
+# Environment
+.env
+
+# Logs
+*.log
