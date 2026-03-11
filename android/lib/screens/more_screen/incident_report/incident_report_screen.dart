@@ -1,7 +1,5 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../services/api_services.dart';
 import '../../../utils/top_snackbar.dart';
@@ -33,9 +31,9 @@ class _IncidentReportScreenState extends State<IncidentReportScreen> {
   final TextEditingController _messageController = TextEditingController();
 
   // User Info
-  String _userName = 'Loading...';
-  String _userEmail = 'Loading...';
-  String _userPhone = 'Loading...';
+  String _userName = 'Guest';
+  String _userEmail = 'guest@example.com';
+  String _userPhone = 'N/A';
   String _authToken = '';
 
   // Locations
@@ -120,14 +118,20 @@ class _IncidentReportScreenState extends State<IncidentReportScreen> {
         if (userProfile != null) {
           setState(() {
             _userName =
-                userProfile['Full_name'] ?? userProfile['name'] ?? 'Guest';
+                userProfile['Fullname'] ??
+                userProfile['name'] ??
+                prefs.getString('user_name') ??
+                'Guest';
             _userEmail =
-                userProfile['Email'] ?? userProfile['email'] ?? 'No Email';
+                userProfile['Email'] ??
+                userProfile['email'] ??
+                prefs.getString('user_email') ??
+                'guest@example.com';
             _userPhone =
-                userProfile['Mobile_number'] ??
+                userProfile['Phone_number'] ??
                 userProfile['phone_number'] ??
-                'No Phone';
-            _isLoadingUser = false;
+                prefs.getString('user_phone') ??
+                'N/A';
           });
         }
       } catch (e) {
@@ -135,15 +139,21 @@ class _IncidentReportScreenState extends State<IncidentReportScreen> {
         setState(() {
           _userName = prefs.getString('user_name') ?? 'Guest';
           _userEmail = prefs.getString('user_email') ?? 'guest@example.com';
-          _userPhone = prefs.getString('user_phone') ?? '';
-          _isLoadingUser = false;
+          _userPhone = prefs.getString('user_phone') ?? 'N/A';
         });
       }
     } else {
+      // Token empty, load local only
       setState(() {
-        _isLoadingUser = false;
+        _userName = prefs.getString('user_name') ?? 'Guest';
+        _userEmail = prefs.getString('user_email') ?? 'guest@example.com';
+        _userPhone = prefs.getString('user_phone') ?? 'N/A';
       });
     }
+
+    setState(() {
+      _isLoadingUser = false;
+    });
   }
 
   Future<void> _fetchTowns() async {
@@ -273,13 +283,7 @@ class _IncidentReportScreenState extends State<IncidentReportScreen> {
     );
   }
 
-  // Determine Map Coordinates roughly based on selection (Simulated logic)
-  LatLng _getMapCenter() {
-    return const LatLng(
-      17.1352,
-      121.8752,
-    ); // Ilagan City, Isabela center by default
-  }
+  // Placeholder for any future location logic if needed
 
   void _submitReport() async {
     setState(() {
@@ -612,6 +616,7 @@ class _IncidentReportScreenState extends State<IncidentReportScreen> {
                                   _selectedIncidentType = null;
                                   _isIselcoPole = null;
                                   _selectedSpecificConcern = null;
+                                  _poleNumberController.clear();
                                 });
                               },
                               child: const Text(
@@ -967,38 +972,62 @@ class _IncidentReportScreenState extends State<IncidentReportScreen> {
     required void Function(String?) onChanged,
   }) {
     return Container(
+      width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.grey.shade50,
-        borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: Colors.grey.shade300),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: Colors.blueAccent.withOpacity(0.3),
+          width: 1.2,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.blueAccent.withOpacity(0.05),
+            offset: const Offset(0, 4),
+            blurRadius: 10,
+          ),
+        ],
       ),
-      child: DropdownButtonHideUnderline(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
         child: DropdownButtonFormField<String>(
-          initialValue: value,
-          hint: Text(hint, style: const TextStyle(color: Colors.black54)),
-          items: items
-              .map(
-                (val) => DropdownMenuItem(
-                  value: val,
-                  child: Text(
-                    val,
-                    style: const TextStyle(color: Colors.black87),
-                    overflow: TextOverflow.ellipsis,
-                  ),
+          value: value,
+          hint: Text(
+            hint,
+            style: TextStyle(
+              color: Colors.grey.shade400,
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          items: items.map((val) {
+            return DropdownMenuItem<String>(
+              value: val,
+              child: Text(
+                val,
+                style: const TextStyle(
+                  color: Colors.black87,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              )
-              .toList(),
+              ),
+            );
+          }).toList(),
           onChanged: onChanged,
-          icon: const Icon(Icons.arrow_drop_down, color: Colors.black54),
+          icon: Icon(
+            Icons.arrow_drop_down_circle_outlined,
+            color: Colors.blueAccent.shade700,
+            size: 20,
+          ),
           isExpanded: true,
           dropdownColor: Colors.white,
-          menuMaxHeight: 300,
           decoration: InputDecoration(
-            prefixIcon: Icon(icon, color: Colors.black54),
+            prefixIcon: Icon(icon, color: Colors.blueAccent.shade700, size: 20),
             border: InputBorder.none,
             contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
               vertical: 12,
-              horizontal: 10,
             ),
           ),
         ),
@@ -1015,30 +1044,59 @@ class _IncidentReportScreenState extends State<IncidentReportScreen> {
     bool disabled = false,
   }) {
     return Container(
+      width: double.infinity,
       decoration: BoxDecoration(
-        color: disabled ? Colors.grey.shade200 : Colors.grey.shade50,
-        borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: Colors.grey.shade300),
+        color: disabled ? Colors.grey.shade50 : Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: disabled
+              ? Colors.grey.shade300
+              : Colors.blueAccent.withOpacity(0.3),
+          width: 1.2,
+        ),
+        boxShadow: disabled
+            ? []
+            : [
+                BoxShadow(
+                  color: Colors.blueAccent.withOpacity(0.05),
+                  offset: const Offset(0, 4),
+                  blurRadius: 10,
+                ),
+              ],
       ),
-      child: DropdownButtonHideUnderline(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
         child: DropdownButtonFormField<String>(
-          initialValue: value,
+          value: value,
           hint: Text(
             hint,
-            style: TextStyle(color: disabled ? Colors.black38 : Colors.black54),
+            style: TextStyle(
+              color: disabled ? Colors.grey.shade400 : Colors.grey.shade400,
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+            ),
           ),
           items: items,
           onChanged: disabled ? null : onChanged,
-          icon: const Icon(Icons.arrow_drop_down, color: Colors.black54),
+          icon: Icon(
+            Icons.arrow_drop_down_circle_outlined,
+            color: disabled ? Colors.grey.shade400 : Colors.blueAccent.shade700,
+            size: 20,
+          ),
           isExpanded: true,
           dropdownColor: Colors.white,
-          menuMaxHeight: 300,
           decoration: InputDecoration(
-            prefixIcon: Icon(icon, color: Colors.black54),
+            prefixIcon: Icon(
+              icon,
+              color: disabled
+                  ? Colors.grey.shade400
+                  : Colors.blueAccent.shade700,
+              size: 20,
+            ),
             border: InputBorder.none,
             contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
               vertical: 12,
-              horizontal: 10,
             ),
           ),
         ),
