@@ -108,7 +108,7 @@ class _ProfileTabState extends State<ProfileTab> {
             },
           ),
           Divider(
-            color: Colors.black.withOpacity(0.5),
+            color: Colors.black.withValues(alpha: 0.5),
             height: 1,
             thickness: 1,
           ),
@@ -125,7 +125,7 @@ class _ProfileTabState extends State<ProfileTab> {
             },
           ),
           Divider(
-            color: Colors.black.withOpacity(0.5),
+            color: Colors.black.withValues(alpha: 0.5),
             height: 1,
             thickness: 1,
           ),
@@ -160,7 +160,7 @@ class _ProfileTabState extends State<ProfileTab> {
             },
           ),
           Divider(
-            color: Colors.black.withOpacity(0.5),
+            color: Colors.black.withValues(alpha: 0.5),
             height: 1,
             thickness: 1,
           ),
@@ -185,7 +185,7 @@ class _ProfileTabState extends State<ProfileTab> {
             },
           ),
           Divider(
-            color: Colors.black.withOpacity(0.5),
+            color: Colors.black.withValues(alpha: 0.5),
             height: 1,
             thickness: 1,
           ),
@@ -210,7 +210,7 @@ class _ProfileTabState extends State<ProfileTab> {
             },
           ),
           Divider(
-            color: Colors.black.withOpacity(0.5),
+            color: Colors.black.withValues(alpha: 0.5),
             height: 1,
             thickness: 1,
           ),
@@ -280,7 +280,7 @@ class _ProfileTabState extends State<ProfileTab> {
             ),
           ),
           Divider(
-            color: Colors.black.withOpacity(0.5),
+            color: Colors.black.withValues(alpha: 0.5),
             height: 1,
             thickness: 1,
           ),

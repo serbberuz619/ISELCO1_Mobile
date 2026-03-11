@@ -101,7 +101,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
         // Divider sa ilalim ng appbar para hindi nakadikit ang content
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1.0),
-          child: Container(color: Colors.black.withOpacity(0.1), height: 1.0),
+          child: Container(color: Colors.black.withValues(alpha: 0.1), height: 1.0),
         ),
       ),
       body: _buildBody(),
@@ -185,7 +185,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
           margin: const EdgeInsets.only(bottom: 16.0),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
-            side: BorderSide(color: Colors.grey.withOpacity(0.1), width: 1),
+            side: BorderSide(color: Colors.grey.withValues(alpha: 0.1), width: 1),
           ),
           child: InkWell(
             borderRadius: BorderRadius.circular(20),
@@ -206,7 +206,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                   Container(
                     padding: const EdgeInsets.all(14),
                     decoration: BoxDecoration(
-                      color: Colors.blueAccent.withOpacity(0.08),
+                      color: Colors.blueAccent.withValues(alpha: 0.08),
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: const Icon(

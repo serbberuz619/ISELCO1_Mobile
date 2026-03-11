@@ -71,7 +71,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             color: Colors.white,
             border: Border(
               bottom: BorderSide(
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.black.withValues(alpha: 0.5),
                 width: 1.0,
               ),
             ),
@@ -267,7 +267,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: Container(
           decoration: BoxDecoration(
             border: Border(
-              top: BorderSide(color: Colors.black.withOpacity(0.5), width: 1.0),
+              top: BorderSide(color: Colors.black.withValues(alpha: 0.5), width: 1.0),
             ),
           ),
           child: Row(

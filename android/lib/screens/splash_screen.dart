@@ -50,6 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
       if (!results.contains(ConnectivityResult.none) && !_isConnected) {
         _isConnected = true;
         // Tanggalin yung nakaharang na dialog kapag bumalik wifi
+        if (!mounted) return;
         if (Navigator.canPop(context)) {
           Navigator.pop(context);
         }
@@ -87,6 +88,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigateToLogin() {
+    if (!mounted) return;
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => const LoginScreen()),

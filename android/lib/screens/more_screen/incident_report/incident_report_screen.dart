@@ -585,8 +585,10 @@ class _IncidentReportScreenState extends State<IncidentReportScreen> {
                       style: TextStyle(color: Colors.black87),
                     ),
                     value: 'Yes',
+                    // ignore: deprecated_member_use
                     groupValue: _isIselcoPole,
                     activeColor: Colors.blueAccent,
+                    // ignore: deprecated_member_use
                     onChanged: (val) => setState(() {
                       _isIselcoPole = val;
                     }),
@@ -599,8 +601,10 @@ class _IncidentReportScreenState extends State<IncidentReportScreen> {
                       style: TextStyle(color: Colors.black87),
                     ),
                     value: 'No',
+                    // ignore: deprecated_member_use
                     groupValue: _isIselcoPole,
                     activeColor: Colors.blueAccent,
+                    // ignore: deprecated_member_use
                     onChanged: (val) {
                       showDialog(
                         context: context,
@@ -853,7 +857,7 @@ class _IncidentReportScreenState extends State<IncidentReportScreen> {
               margin: const EdgeInsets.only(top: 15),
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               decoration: BoxDecoration(
-                color: Colors.blueAccent.withOpacity(0.1),
+                color: Colors.blueAccent.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
@@ -1016,13 +1020,13 @@ class _IncidentReportScreenState extends State<IncidentReportScreen> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: Colors.blueAccent.withOpacity(0.3),
+              color: Colors.blueAccent.withValues(alpha: 0.3),
               width: 1.2,
             ),
             color: Colors.white,
             boxShadow: [
               BoxShadow(
-                color: Colors.blueAccent.withOpacity(0.05),
+                color: Colors.blueAccent.withValues(alpha: 0.05),
                 offset: const Offset(0, 4),
                 blurRadius: 10,
               ),
@@ -1046,8 +1050,8 @@ class _IncidentReportScreenState extends State<IncidentReportScreen> {
           offset: const Offset(0, -5),
           scrollbarTheme: ScrollbarThemeData(
             radius: const Radius.circular(40),
-            thickness: MaterialStateProperty.all(6),
-            thumbVisibility: MaterialStateProperty.all(true),
+            thickness: WidgetStateProperty.all(6),
+            thumbVisibility: WidgetStateProperty.all(true),
           ),
         ),
         menuItemStyleData: const MenuItemStyleData(
@@ -1101,7 +1105,7 @@ class _IncidentReportScreenState extends State<IncidentReportScreen> {
             border: Border.all(
               color: disabled
                   ? Colors.grey.shade300
-                  : Colors.blueAccent.withOpacity(0.3),
+                  : Colors.blueAccent.withValues(alpha: 0.3),
               width: 1.2,
             ),
             color: disabled ? Colors.grey.shade50 : Colors.white,
@@ -1109,7 +1113,7 @@ class _IncidentReportScreenState extends State<IncidentReportScreen> {
                 ? []
                 : [
                     BoxShadow(
-                      color: Colors.blueAccent.withOpacity(0.05),
+                      color: Colors.blueAccent.withValues(alpha: 0.05),
                       offset: const Offset(0, 4),
                       blurRadius: 10,
                     ),
@@ -1133,8 +1137,8 @@ class _IncidentReportScreenState extends State<IncidentReportScreen> {
           offset: const Offset(0, -5),
           scrollbarTheme: ScrollbarThemeData(
             radius: const Radius.circular(40),
-            thickness: MaterialStateProperty.all(6),
-            thumbVisibility: MaterialStateProperty.all(true),
+            thickness: WidgetStateProperty.all(6),
+            thumbVisibility: WidgetStateProperty.all(true),
           ),
         ),
         menuItemStyleData: const MenuItemStyleData(

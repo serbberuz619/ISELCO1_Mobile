@@ -20,7 +20,7 @@ class CorporateValuesScreen extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.black87),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1.0),
-          child: Container(color: Colors.black.withOpacity(0.1), height: 1.0),
+          child: Container(color: Colors.black.withValues(alpha: 0.1), height: 1.0),
         ),
       ),
       body: SingleChildScrollView(
@@ -78,12 +78,12 @@ class CorporateValuesScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.blueGrey.withOpacity(0.08),
+            color: Colors.blueGrey.withValues(alpha: 0.08),
             blurRadius: 15,
             offset: const Offset(0, 8),
           ),
         ],
-        border: Border.all(color: Colors.black.withOpacity(0.04)),
+        border: Border.all(color: Colors.black.withValues(alpha: 0.04)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +91,7 @@ class CorporateValuesScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.blueAccent.withOpacity(0.1),
+              color: Colors.blueAccent.withValues(alpha: 0.1),
               shape: BoxShape.circle,
             ),
             child: Icon(icon, size: 30, color: Colors.blueAccent),

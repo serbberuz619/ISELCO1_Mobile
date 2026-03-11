@@ -19,7 +19,7 @@ class VisionMissionScreen extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.black87),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1.0),
-          child: Container(color: Colors.black.withOpacity(0.1), height: 1.0),
+          child: Container(color: Colors.black.withValues(alpha: 0.1), height: 1.0),
         ),
       ),
       body: SingleChildScrollView(

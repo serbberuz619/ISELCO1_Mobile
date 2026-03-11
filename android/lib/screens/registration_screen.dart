@@ -169,6 +169,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   }
 
   void _showError(String msg) {
+    if (!mounted) return;
     showTopSnackBar(context, msg, color: Colors.redAccent);
   }
 
@@ -252,7 +253,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           decoration: BoxDecoration(
             color: _currentPage == index
                 ? Colors.cyanAccent
-                : Colors.white.withOpacity(0.3),
+                : Colors.white.withValues(alpha: 0.3),
             borderRadius: BorderRadius.circular(10),
             boxShadow: _currentPage == index
                 ? [
@@ -298,15 +299,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 filter: ImageFilter.blur(sigmaX: 15.0, sigmaY: 15.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.1),
+                    color: Colors.white.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(30),
                     border: Border.all(
-                      color: Colors.white.withOpacity(0.25),
+                      color: Colors.white.withValues(alpha: 0.25),
                       width: 1.5,
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
+                        color: Colors.black.withValues(alpha: 0.1),
                         blurRadius: 20,
                         spreadRadius: -5,
                       ),
@@ -434,13 +435,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                               );
 
                                           if (res['success'] == true) {
-                                            if (!mounted) return;
+                                            if (!context.mounted) return;
                                             showTopSnackBar(
                                               context,
                                               'Registration submitted! Please wait for approval of your account.',
                                               color: Colors.green,
                                             );
                                             // Clear backstack and Go to Login Screen kapag tapos na
+                                            if (!context.mounted) return;
                                             Navigator.pushAndRemoveUntil(
                                               context,
                                               MaterialPageRoute(
@@ -687,7 +689,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.05),
+            color: Colors.white.withValues(alpha: 0.05),
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: Colors.white12),
           ),
@@ -748,9 +750,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
             decoration: BoxDecoration(
-              color: Colors.cyanAccent.withOpacity(0.1),
+              color: Colors.cyanAccent.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(15),
-              border: Border.all(color: Colors.cyanAccent.withOpacity(0.3)),
+              border: Border.all(color: Colors.cyanAccent.withValues(alpha: 0.3)),
             ),
             child: Row(
               children: [
@@ -874,9 +876,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         height: 70,
         width: 70,
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.08),
+          color: Colors.white.withValues(alpha: 0.08),
           borderRadius: BorderRadius.circular(15),
-          border: Border.all(color: Colors.white.withOpacity(0.2)),
+          border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -905,11 +907,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Container(
       decoration: BoxDecoration(
         color: disabled
-            ? Colors.black.withOpacity(0.1)
-            : Colors.white.withOpacity(0.08),
+            ? Colors.black.withValues(alpha: 0.1)
+            : Colors.white.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: disabled ? Colors.transparent : Colors.white.withOpacity(0.3),
+          color: disabled ? Colors.transparent : Colors.white.withValues(alpha: 0.3),
         ),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
@@ -926,7 +928,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 style: TextStyle(
                   color: disabled
                       ? Colors.white30
-                      : Colors.white.withOpacity(0.7),
+                      : Colors.white.withValues(alpha: 0.7),
                   fontSize: 15,
                 ),
               ),
@@ -972,11 +974,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Container(
       decoration: BoxDecoration(
         color: readOnly
-            ? Colors.black.withOpacity(0.1)
-            : Colors.white.withOpacity(0.08),
+            ? Colors.black.withValues(alpha: 0.1)
+            : Colors.white.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: readOnly ? Colors.transparent : Colors.white.withOpacity(0.3),
+          color: readOnly ? Colors.transparent : Colors.white.withValues(alpha: 0.3),
         ),
       ),
       child: TextField(
@@ -992,7 +994,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         ),
         decoration: InputDecoration(
           hintText: hint,
-          hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
+          hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.5)),
           prefixIcon: Icon(
             icon,
             color: readOnly ? Colors.white30 : Colors.cyanAccent,

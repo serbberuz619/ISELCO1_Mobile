@@ -88,7 +88,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
         iconTheme: const IconThemeData(color: Colors.black87),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1.0),
-          child: Container(color: Colors.black.withOpacity(0.1), height: 1.0),
+          child: Container(color: Colors.black.withValues(alpha: 0.1), height: 1.0),
         ),
       ),
       body: _buildBody(),
@@ -177,8 +177,8 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
                 CircleAvatar(
                   radius: 30,
                   backgroundColor: isBoard
-                      ? Colors.amber.withOpacity(0.2)
-                      : Colors.blue.withOpacity(0.2),
+                      ? Colors.amber.withValues(alpha: 0.2)
+                      : Colors.blue.withValues(alpha: 0.2),
                   child: Icon(
                     isBoard ? Icons.person_pin : Icons.badge_outlined,
                     size: 30,

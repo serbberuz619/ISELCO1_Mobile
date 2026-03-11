@@ -76,7 +76,7 @@ class _ManagementScreenState extends State<ManagementScreen> {
         iconTheme: const IconThemeData(color: Colors.black87),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1.0),
-          child: Container(color: Colors.black.withOpacity(0.05), height: 1.0),
+          child: Container(color: Colors.black.withValues(alpha: 0.05), height: 1.0),
         ),
       ),
       body: _buildBody(),
@@ -159,7 +159,7 @@ class _ManagementScreenState extends State<ManagementScreen> {
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.03),
+                color: Colors.black.withValues(alpha: 0.03),
                 blurRadius: 20,
                 offset: const Offset(0, 10),
               ),
@@ -175,7 +175,7 @@ class _ManagementScreenState extends State<ManagementScreen> {
                   width: 60,
                   height: 60,
                   decoration: BoxDecoration(
-                    color: Colors.indigo.withOpacity(0.08),
+                    color: Colors.indigo.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: const Center(
@@ -217,7 +217,7 @@ class _ManagementScreenState extends State<ManagementScreen> {
                           vertical: 6,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.grey.withOpacity(0.1),
+                          color: Colors.grey.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Row(

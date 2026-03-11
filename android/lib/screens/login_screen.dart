@@ -270,10 +270,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: double.infinity, // Sasakop sa allowed width
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.1),
+                        color: Colors.white.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(30),
                         border: Border.all(
-                          color: Colors.white.withOpacity(0.3),
+                          color: Colors.white.withValues(alpha: 0.3),
                         ),
                       ),
                       child: const Row(
@@ -311,7 +311,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Expanded(
                       child: Divider(
-                        color: Colors.white.withOpacity(0.4),
+                        color: Colors.white.withValues(alpha: 0.4),
                         thickness: 1,
                       ),
                     ),
@@ -320,7 +320,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text(
                         'You can connect with',
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.8),
+                          color: Colors.white.withValues(alpha: 0.8),
                           fontSize: 6,
                           fontWeight: FontWeight.w500,
                         ),
@@ -328,7 +328,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Expanded(
                       child: Divider(
-                        color: Colors.white.withOpacity(0.4),
+                        color: Colors.white.withValues(alpha: 0.4),
                         thickness: 1,
                       ),
                     ),
@@ -366,10 +366,10 @@ class _LoginScreenState extends State<LoginScreen> {
         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.15),
+            color: Colors.white.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: Colors.white.withOpacity(0.3),
+              color: Colors.white.withValues(alpha: 0.3),
               width: 1.5,
             ),
           ),
@@ -383,7 +383,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             decoration: InputDecoration(
               hintText: hintText,
-              hintStyle: TextStyle(color: Colors.white.withOpacity(0.6)),
+              hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.6)),
               prefixIcon: Icon(prefixIcon, color: Colors.white),
               border: InputBorder.none,
               contentPadding: const EdgeInsets.symmetric(
@@ -404,10 +404,10 @@ class _LoginScreenState extends State<LoginScreen> {
         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.15),
+            color: Colors.white.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: Colors.white.withOpacity(0.3),
+              color: Colors.white.withValues(alpha: 0.3),
               width: 1.5,
             ),
           ),
@@ -421,7 +421,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             decoration: InputDecoration(
               hintText: 'Enter your password',
-              hintStyle: TextStyle(color: Colors.white.withOpacity(0.8)),
+              hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.8)),
               prefixIcon: const Icon(Icons.lock_outline, color: Colors.white),
               suffixIcon: IconButton(
                 icon: Icon(
@@ -460,7 +460,7 @@ class _LoginScreenState extends State<LoginScreen> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF0072FF).withOpacity(0.4),
+            color: const Color(0xFF0072FF).withValues(alpha: 0.4),
             blurRadius: 15,
             offset: const Offset(0, 8),
           ),
@@ -547,7 +547,7 @@ class _LoginScreenState extends State<LoginScreen> {
             borderRadius: BorderRadius.circular(20),
           ),
           elevation: 5,
-          shadowColor: Colors.black.withOpacity(0.2),
+          shadowColor: Colors.black.withValues(alpha: 0.2),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

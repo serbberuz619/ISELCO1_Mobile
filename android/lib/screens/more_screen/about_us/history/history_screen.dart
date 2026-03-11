@@ -19,7 +19,7 @@ class HistoryScreen extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.black87),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1.0),
-          child: Container(color: Colors.black.withOpacity(0.1), height: 1.0),
+          child: Container(color: Colors.black.withValues(alpha: 0.1), height: 1.0),
         ),
       ),
       body: SingleChildScrollView(
@@ -30,9 +30,9 @@ class HistoryScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Colors.blueAccent.withOpacity(0.05),
+                color: Colors.blueAccent.withValues(alpha: 0.05),
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: Colors.blueAccent.withOpacity(0.1)),
+                border: Border.all(color: Colors.blueAccent.withValues(alpha: 0.1)),
               ),
               child: const Text(
                 "The ISABELA I ELECTRIC COOPERATIVE, INC. was organized, incorporated and registered on March 24, 1972.",
