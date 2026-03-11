@@ -179,12 +179,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         : await Permission.photos.request();
     final ImagePicker picker = ImagePicker();
     try {
-      // Maga-apply tayo ng compression para lumiit ang size in MB (70% quality, max 1600px width/height)
+      // Enhanced compression: 85% is the sweet spot for high visual quality (looks original) but low size.
+      // Scaling down to 1800px reduces MBs without losing visible crispness.
       final XFile? image = await picker.pickImage(
         source: source,
-        imageQuality: 70,
-        maxWidth: 1600,
-        maxHeight: 1600,
+        imageQuality: 85,
+        maxWidth: 1800,
+        maxHeight: 1800,
       );
       if (image != null) {
         int sizeInBytes = await image.length();

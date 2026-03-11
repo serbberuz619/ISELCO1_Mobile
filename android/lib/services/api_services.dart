@@ -9,7 +9,7 @@ class ApiServices {
   static const bool isProduction = false;
 
   // Base URL configuration
-  static const String devBaseUrl = 'http://192.168.100.216:8000/api';
+  static const String devBaseUrl = 'http://192.168.0.143:8000/api';
   static const String prodBaseUrl = 'https://your-hostinger-domain.com/api';
 
   static const String baseUrl = isProduction ? prodBaseUrl : devBaseUrl;
